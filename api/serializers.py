@@ -1,13 +1,13 @@
 from rest_framework import serializers
 from api.models import Mood
-from django.contrib.auth.models import User
+from .models import Profile
 
 class UserSerializer(serializers.ModelSerializer):
     moods = serializers.PrimaryKeyRelatedField(many=True, queryset=Mood.objects.all())
 
     class Meta:
-        model = User
-        fields = ['id', 'username', 'moods']
+        model = Profile
+        fields = ['id', 'username', 'moods', 'streak']
 
 
 class MoodSerializer(serializers.Serializer):
